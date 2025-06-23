@@ -1,0 +1,447 @@
+/* Removed Tailwind imports and @apply, replaced with plain CSS */
+:root {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  --primary: 265 89% 58%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 265 89% 58%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 263 85% 76%;
+  --primary-foreground: 240 5.9% 10%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 263 85% 76%;
+}
+
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Inter', sans-serif;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f3e8ff 0%, #e0e7ff 100%);
+  padding-bottom: 2rem;
+}
+
+.dark main {
+  background: linear-gradient(135deg, #181825 0%, #312e81 100%);
+}
+
+.container {
+  max-width: 48rem;
+  width: 100%;
+  margin: 2rem auto 0 auto;
+  padding: 2rem 1.5rem;
+  background: hsl(var(--card));
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 32px 0 rgba(124,58,237,0.08);
+}
+
+h1.bg-gradient-text {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.drag-zone {
+  padding: 2.5rem 1.5rem;
+  border: 2px dashed hsl(var(--primary));
+  border-radius: 1rem;
+  background: hsl(var(--card));
+  transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.drag-zone:hover, .drag-active {
+  border-color: hsl(var(--primary));
+  background: hsl(var(--primary) / 0.07);
+}
+
+.file-list {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #f4f4f5;
+  border-radius: 1.25rem;
+  box-shadow: 0 2px 12px 0 rgba(124,58,237,0.08);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  min-height: 4.5rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.file-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.file-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: #fff;
+  border-radius: 1.1rem;
+  box-shadow: 0 1px 6px 0 rgba(124,58,237,0.07);
+  padding: 0.7rem 1.2rem 0.7rem 0.9rem;
+  font-size: 1rem;
+  min-width: 180px;
+  max-width: 260px;
+  transition: box-shadow 0.18s, transform 0.18s;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid #ece9f7;
+}
+
+.file-list li:hover {
+  box-shadow: 0 4px 16px 0 rgba(124,58,237,0.13);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.file-list .pdf-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  color: #7c3aed;
+  flex-shrink: 0;
+}
+
+.file-list .file-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.file-list .file-name {
+  font-weight: 600;
+  color: #312e81;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.02rem;
+}
+
+.file-list .file-size {
+  font-size: 0.92rem;
+  color: #7c3aed;
+  opacity: 0.7;
+  margin-top: 0.1rem;
+}
+
+.file-list .remove-btn {
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 50%;
+  transition: background 0.15s, color 0.15s;
+  margin-left: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-list .remove-btn:hover {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1.15rem;
+  padding: 0.9rem 2.2rem;
+  background: linear-gradient(90deg, #6366f1 0%, #a78bfa 100%);
+  color: #fff;
+  box-shadow: 0 2px 8px 0 rgba(124,58,237,0.10);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+  margin-top: 2rem;
+}
+
+.action-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.action-button:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px 0 rgba(124,58,237,0.18);
+}
+
+.bg-gradient-text {
+  background: linear-gradient(90deg, #6366f1 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.features-title {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding: 0.5em 1.5em;
+  background: none;
+  background-image: linear-gradient(90deg, #6366f1 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -1px;
+  border-radius: 0.75em;
+  position: relative;
+  z-index: 1;
+}
+
+.features-title::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 120%;
+  background: #fff;
+  opacity: 0.7;
+  border-radius: 1em;
+  z-index: -1;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 768px) {
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.footer {
+  border-top: 1px solid #e5e7eb;
+  padding: 1.1rem 0 0.7rem 0;
+  background: #f4f4f5;
+  width: 90vw;
+  min-width: 0;
+  max-width: 1200px;
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  z-index: 100;
+  height: auto;
+  box-sizing: border-box;
+  border-radius: 1.2rem 1.2rem 0 0;
+  box-shadow: 0 -2px 16px 0 rgba(124,58,237,0.08);
+  transition: width 0.2s, max-width 0.2s, padding 0.2s;
+}
+@media (max-width: 900px) {
+  .footer {
+    max-width: 98vw;
+    width: 98vw;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 0.8rem 0.8rem 0 0;
+  }
+}
+@media (max-width: 600px) {
+  .footer {
+    max-width: 100vw;
+    width: 100vw;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+}
+.footer-container {
+  max-width: 72rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.footer-logo {
+  font-size: 1.3rem;
+  color: #7c3aed;
+}
+.footer-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #7c3aed;
+}
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.footer-link {
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 1.7rem;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+.footer-link:hover {
+  color: #7c3aed;
+}
+.footer-copy {
+  color: #6b7280;
+  font-size: 0.95rem;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+  .drag-zone {
+    padding: 1.5rem 0.5rem;
+  }
+  h1.bg-gradient-text {
+    font-size: 2rem;
+  }
+  .features-title {
+    font-size: 1.3rem;
+    padding: 0.4em 0.5em;
+    text-align: left;
+  }
+}
+
+/* Utility classes and keyframes as needed */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary) / 0.3) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--primary) / 0.3);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--primary) / 0.5);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/*
+Replace the footer links in your layout/footer component with the following JSX:
+<div className="footer-links">
+  <a href="https://github.com/ArpitSingh4010" className="footer-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+    <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.987 1.029-2.687-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.7 1.028 1.594 1.028 2.687 0 3.847-2.337 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .267.18.577.688.48C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2Z"/></svg>
+  </a>
+  <a href="https://www.linkedin.com/in/arpit-singh-ab056a322/" className="footer-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+    <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.966 0-1.75-.79-1.75-1.76 0-.97.784-1.76 1.75-1.76s1.75.79 1.75 1.76c0 .97-.784 1.76-1.75 1.76zm13.5 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.89v1.36h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.61z"/></svg>
+  </a>
+</div>
+*/
+

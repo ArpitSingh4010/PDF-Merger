@@ -1,0 +1,170 @@
+/* Navbar.css - Beautiful, modern navbar styling */
+
+.navbar-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background: rgba(255,255,255,0.95);
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px 0 rgba(124,58,237,0.04);
+  backdrop-filter: blur(8px);
+}
+
+.navbar-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+  padding: 0 2rem;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #7c3aed;
+  transition: opacity 0.2s;
+}
+
+.navbar-logo:hover {
+  opacity: 0.8;
+}
+
+.navbar-logo-icon {
+  font-size: 1.7rem;
+  color: #7c3aed;
+}
+
+.navbar-logo-text {
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: -1px;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar-links a {
+  color: #18181b;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.navbar-links a:hover {
+  color: #7c3aed;
+}
+
+.navbar-auth {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-signin-btn,
+.navbar-signup-btn {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.navbar-signin-btn {
+  background: transparent;
+  color: #7c3aed;
+}
+
+.navbar-signin-btn:hover {
+  background: #ede9fe;
+}
+
+.navbar-signup-btn {
+  background: linear-gradient(90deg, #6366f1 0%, #a78bfa 100%);
+  color: #fff;
+}
+
+.navbar-signup-btn:hover {
+  opacity: 0.9;
+}
+
+.navbar-mobile-toggle {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .navbar-links, .navbar-auth {
+    display: none;
+  }
+  .navbar-mobile-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.navbar-mobile-btn {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: #7c3aed;
+  font-size: 1.5rem;
+  transition: background 0.2s;
+}
+
+.navbar-mobile-btn:hover {
+  background: #ede9fe;
+}
+
+.navbar-mobile-icon {
+  font-size: 1.5rem;
+}
+
+.navbar-mobile-menu {
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px 0 rgba(124,58,237,0.04);
+  padding: 1rem 2rem 1.5rem 2rem;
+}
+
+.navbar-mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.navbar-mobile-links a {
+  color: #18181b;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.navbar-mobile-links a:hover {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+.navbar-mobile-auth {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
