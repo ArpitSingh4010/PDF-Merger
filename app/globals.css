@@ -97,11 +97,31 @@ h1.bg-gradient-text {
   cursor: pointer;
   text-align: center;
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  box-shadow: 0 2px 12px 0 rgba(124,58,237,0.04);
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .drag-zone:hover, .drag-active {
   border-color: hsl(var(--primary));
   background: hsl(var(--primary) / 0.07);
+}
+
+@media (max-width: 600px) {
+  .drag-zone {
+    padding: 1.2rem 0.3rem;
+    min-height: 120px;
+    font-size: 1rem;
+    max-width: 95vw;
+  }
 }
 
 .file-list {
@@ -272,11 +292,43 @@ h1.bg-gradient-text {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: auto;
 }
 @media (min-width: 768px) {
   .features-grid {
     grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: auto;
   }
+}
+@media (max-width: 600px) {
+  .features-grid {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: auto;
+  }
+}
+
+.feature-card > div > svg,
+.feature-card > div > .h-6,
+.feature-card > div > .w-6 {
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+.feature-card > div {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  min-width: 2.5rem !important;
+  min-height: 2.5rem !important;
+  max-width: 2.5rem !important;
+  max-height: 2.5rem !important;
 }
 
 .footer {
@@ -391,6 +443,27 @@ h1.bg-gradient-text {
     font-size: 1.3rem;
     padding: 0.4em 0.5em;
     text-align: left;
+  }
+}
+
+section#features.container {
+  max-width: 500px;
+  margin-left: 0;
+  margin-right: auto;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 768px) {
+  section#features.container {
+    max-width: 700px;
+  }
+}
+@media (max-width: 600px) {
+  section#features.container {
+    max-width: 90vw;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }
 
