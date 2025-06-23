@@ -71,7 +71,7 @@ export default function Home() {
   const overLimit = totalSizeKB > MAX_TOTAL_SIZE_KB;
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <main className="min-h-screen" style={{ background: 'none' }}>
       {/* Hero Section */}
       <section className="container py-16 md:py-24 animate-fade-in">
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
