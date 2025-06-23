@@ -265,7 +265,7 @@ export default function Home() {
             </div>
             <div className="feature-card mt-8 text-center md:text-left md:mx-4">
               <h3 className="text-xl font-semibold mb-2">Arrange Your Files</h3>
-              <p className="text-muted-foreground">Review your selected files. You can remove any files you don't want to include in the final merged document.</p>
+              <p className="text-muted-foreground">Review your selected files. You can remove any files you don&apos;t want to include in the final merged document.</p>
             </div>
           </div>
           
@@ -276,7 +276,7 @@ export default function Home() {
             </div>
             <div className="feature-card mt-8 text-center md:text-left md:ml-4">
               <h3 className="text-xl font-semibold mb-2">Merge & Download</h3>
-              <p className="text-muted-foreground">Click the "Merge PDFs" button and your combined PDF file will be generated and downloaded automatically.</p>
+              <p className="text-muted-foreground">Click the &quot;Merge PDFs&quot; button and your combined PDF file will be generated and downloaded automatically.</p>
             </div>
           </div>
         </div>

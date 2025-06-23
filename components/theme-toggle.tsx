@@ -6,7 +6,7 @@ import { FaMoon, FaSun } from "react-icons/fa"
 import './theme-toggle.css';
 
 export function VibeThemeSwitch() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
