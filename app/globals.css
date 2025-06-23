@@ -313,6 +313,10 @@ h1.bg-gradient-text {
     padding-left: 0.2rem;
     padding-right: 0.2rem;
     border-radius: 0.5rem 0.5rem 0 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.3rem;
+    min-height: 36px;
+    height: 44px;
   }
 }
 .footer-container {

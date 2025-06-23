@@ -98,11 +98,19 @@ export default function Home() {
 
       {/* Upload Section */}
       <section className="container max-w-3xl mx-auto mb-16">
-        <div
-          className={`drag-zone flex flex-col items-center justify-center animate-fade-in`}
-          onDrop={handleDrop}
+        <label
+          className={`drag-zone flex flex-col items-center justify-center animate-fade-in cursor-pointer`}
+          onDrop={(e) => {
+            e.preventDefault();
+            const droppedFiles = Array.from(e.dataTransfer.files).filter(
+              (file) => file.type === "application/pdf"
+            );
+            setFiles((prev) => [...prev, ...droppedFiles]);
+          }}
           onDragOver={(e) => e.preventDefault()}
-          onClick={() => inputRef.current?.click()}
+          htmlFor="pdf-upload-input"
+          tabIndex={0}
+          style={{ width: '100%' }}
         >
           <div className="p-4 rounded-full bg-primary/10 mb-4">
             <FaCloudUploadAlt className="text-4xl md:text-5xl text-primary" />
@@ -111,17 +119,19 @@ export default function Home() {
             Drag & Drop PDF Files Here
           </h3>
           <p className="text-muted-foreground mb-4">
-            or click to browse your files
+            or tap to browse your files
           </p>
           <input
             ref={inputRef}
+            id="pdf-upload-input"
             type="file"
             accept="application/pdf"
             multiple
             className="hidden"
             onChange={handleFileChange}
+            tabIndex={-1}
           />
-        </div>
+        </label>
 
         {/* File List */}
         {files.length > 0 && (

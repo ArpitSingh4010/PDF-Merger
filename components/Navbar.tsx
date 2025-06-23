@@ -38,8 +38,8 @@ const Navbar = () => {
             onClick={toggleMobileMenu}
             className="navbar-mobile-btn"
             aria-expanded={mobileMenuOpen}
+            aria-label="Toggle navigation menu"
           >
-            <span className="sr-only">Open main menu</span>
             {mobileMenuOpen ? (
               <FaTimes className="navbar-mobile-icon" aria-hidden="true" />
             ) : (
