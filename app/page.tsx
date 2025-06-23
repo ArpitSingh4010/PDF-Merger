@@ -12,14 +12,6 @@ export default function Home() {
   // Set a KB limit for merging (e.g., 10 MB = 10240 KB)
   const MAX_TOTAL_SIZE_KB = 10240;
 
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    const droppedFiles = Array.from(e.dataTransfer.files).filter(
-      (file) => file.type === "application/pdf"
-    );
-    setFiles((prev) => [...prev, ...droppedFiles]);
-  };
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
     const selectedFiles = Array.from(e.target.files).filter(
