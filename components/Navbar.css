@@ -139,6 +139,11 @@
   border-bottom: 1px solid #e5e7eb;
   box-shadow: 0 2px 8px 0 rgba(124,58,237,0.04);
   padding: 1rem 2rem 1.5rem 2rem;
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
 }
 
 .navbar-mobile-links {
