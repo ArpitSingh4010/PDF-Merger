@@ -7,6 +7,7 @@ export default function Home() {
   const [files, setFiles] = useState<File[]>([]);
   const [loading, setLoading] = useState(false);
   const [merged, setMerged] = useState(false);
+  const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Set a KB limit for merging (e.g., 10 MB = 10240 KB)
@@ -40,20 +41,32 @@ export default function Home() {
     if (res.ok) {
       const blob = await res.blob();
       const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "merged.pdf";
-      a.click();
-      window.URL.revokeObjectURL(url);
+      setDownloadUrl(url);
       setMerged(true);
     } else {
       alert("Failed to merge PDFs.");
     }
   };
 
+  const handleDownload = () => {
+    if (downloadUrl) {
+      const a = document.createElement("a");
+      a.href = downloadUrl;
+      a.download = "merged.pdf";
+      a.click();
+      window.URL.revokeObjectURL(downloadUrl);
+      setDownloadUrl(null);
+      setMerged(false);
+    }
+  };
+
   const handleDeleteAll = () => {
     setFiles([]);
     setMerged(false);
+    if (downloadUrl) {
+      window.URL.revokeObjectURL(downloadUrl);
+      setDownloadUrl(null);
+    }
   };
 
   // Calculate total size in KB and MB
@@ -171,10 +184,10 @@ export default function Home() {
           </div>
         )}
 
-        {/* Merge Button */}
-        <div className="flex justify-center mt-8 mb-16 gap-4">
+        {/* Merge & Download Buttons */}
+        <div className="flex flex-col sm:flex-row justify-center sm:justify-between items-stretch sm:items-center mt-8 mb-16 gap-4 w-full">
           <button
-            className="action-button group"
+            className="action-button group w-full sm:w-auto"
             disabled={files.length < 2 || loading || overLimit}
             onClick={handleMerge}
           >
@@ -194,13 +207,23 @@ export default function Home() {
             )}
           </button>
           {merged && (
-            <button
-              className="action-button group bg-destructive text-white hover:bg-destructive/80"
-              onClick={handleDeleteAll}
-              disabled={loading}
-            >
-              <FaTrash className="mr-2" /> Delete All
-            </button>
+            <>
+              <button
+                className="action-button group bg-primary text-white hover:bg-primary/80 w-full sm:w-auto"
+                onClick={handleDownload}
+                disabled={!downloadUrl}
+              >
+                <FaFilePdf className="mr-2" /> Download Merged PDF
+              </button>
+              <button
+                className="action-button group bg-destructive text-white hover:bg-destructive/80 w-full sm:w-auto sm:ml-auto"
+                onClick={handleDeleteAll}
+                disabled={loading}
+                style={{ alignSelf: 'stretch', justifySelf: 'flex-end' }}
+              >
+                <FaTrash className="mr-2" /> Delete All
+              </button>
+            </>
           )}
         </div>
         
